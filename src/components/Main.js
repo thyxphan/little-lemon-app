@@ -3,6 +3,7 @@ import CallToAction from "./CallToAction";
 import Specials from "./Specials";
 import Chicago from "./Chicago";
 import CustomersSay from "./CustomersSay";
+import BookingPage from "./BookingPage";
 
 function Main() {
   return (
@@ -22,6 +23,7 @@ function Main() {
         <Route path="/specials" element={<Specials />} />
         <Route path="/chicago" element={<Chicago />} />
         <Route path="/testimonials" element={<CustomersSay />} />
+        <Route path="/booking" element={<BookingPage />} />  {/* Booking route */}
       </Routes>
     </main>
   );
