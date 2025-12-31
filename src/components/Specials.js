@@ -21,10 +21,12 @@ function Specials() {
 
       <div className="special-cards">
         {specials.map(({ image, name }) => (
-          <div className="special-card" key={name}>
-            <img src={image} alt={name} className="special-image" />
-            <p>{name}</p>
-          </div>
+          <article className="special-card" key={name}>
+            <figure>
+              <img src={image} alt={name} className="special-image" />
+              <figcaption><h3>{name}</h3></figcaption>
+            </figure>
+          </article>
         ))}
       </div>
     </section>
