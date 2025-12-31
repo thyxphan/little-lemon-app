@@ -1,13 +1,257 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* =========================
+   CSS Variables
+   ========================= */
+   :root {
+    --primary: #495e57;
+    --accent: #f4ce14;
+    --light-bg: #f4f4f4;
+    --text-dark: #333;
+    --radius-sm: 5px;
+    --radius-md: 8px;
+    --radius-lg: 10px;
+  }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+  /* =========================
+     Global Styles
+     ========================= */
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text-dark);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  code {
+    font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+  }
+
+  /* =========================
+     Typography
+     ========================= */
+  h1 {
+    font-size: 3rem;
+    margin: 0;
+    letter-spacing: 1px;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    margin: 0.75rem 0;
+  }
+
+  /* =========================
+     Layout Helpers
+     ========================= */
+  .text-center {
+    text-align: center;
+  }
+
+  section {
+    padding: 3rem 2rem;
+  }
+
+  /* =========================
+     Buttons
+     ========================= */
+  button {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--accent);
+    color: #000;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #e0b800;
+  }
+
+  /* =========================
+     Navbar
+     ========================= */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #ddd;
+    font-size: 18px;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #000;
+  }
+
+  nav a:hover {
+    color: var(--primary);
+  }
+
+  /* =========================
+     Hero / Call To Action
+     ========================= */
+  .hero {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    background-color: var(--primary);
+    color: #fff;
+    padding: 4rem 2rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .hero-text {
+    flex: 1;
+  }
+
+  .hero-text p {
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-text button {
+    background-color: #fff;
+    color: var(--primary);
+  }
+
+  .hero-image {
+    flex: 1;
+  }
+
+  .hero-image img {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+  }
+
+  /* =========================
+     Specials Section
+     ========================= */
+  .specials {
+    background-color: #fff5e1;
+    text-align: center;
+  }
+
+  .special-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .special-card {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .special-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+  }
+
+  /* =========================
+     Testimonials Section
+     ========================= */
+  .testimonials {
+    background-color: var(--light-bg);
+    text-align: center;
+  }
+
+  .testimonial-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .testimonial {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: var(--radius-md);
+  }
+
+  .stars {
+    color: var(--accent);
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+
+  .customer-name {
+    margin-top: 0.5rem;
+    font-weight: 600;
+  }
+
+  /* =========================
+     About / Chicago Section
+     ========================= */
+  .about {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+  }
+
+  .about-text,
+  .about-image {
+    flex: 1;
+  }
+
+  .about-text {
+    padding-right: 1rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    display: block;
+  }
+
+  /* Responsive for smaller screens */
+  @media (max-width: 768px) {
+    .about {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .about-text {
+      padding-right: 0;
+      margin: 0;
+    }
+
+    .about-image {
+      margin-top: 1.5rem;
+    }
+  }
+
+  /* =========================
+     Footer
+     ========================= */
+  footer {
+    padding: 2rem;
+    text-align: center;
+    border-top: 1px solid #ddd;
+  }
