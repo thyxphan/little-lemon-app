@@ -27,6 +27,7 @@ export const updateTimes = (state, action) => {
 };
 
 function Main() {
+  // eslint-disable-next-line no-unused-vars
   const [availableTimes, dispatch] = useReducer(
     updateTimes,
     [],
@@ -37,8 +38,8 @@ function Main() {
 
   // Handles submitting the booking form
   const submitForm = (formData) => {
-    const result = submitAPI(formData);
-    if (result) {
+    const success = submitAPI(formData);
+    if (success) {
       navigate("/confirmed");
     }
   };
@@ -70,7 +71,7 @@ function Main() {
           element={
             <BookingPage
               availableTimes={availableTimes}
-              dispatch={dispatch}
+              dispatch={dispatch} // ✅ still passed down
               submitForm={submitForm}
             />
           }

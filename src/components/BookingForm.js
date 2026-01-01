@@ -1,22 +1,29 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-function BookingForm({ availableTimes = [], dispatch, submitForm }) {
+function BookingForm({ availableTimes = [], onSubmit }) {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("Birthday");
 
-  const handleDateChange = (e) => {
-    const selectedDate = e.target.value;
-    setDate(selectedDate);
-    // Dispatch action to update times
-    dispatch({ type: "UPDATE_TIMES", date: selectedDate });
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = { date, time, guests, occasion };
-    submitForm(formData);
+    if (!isFormValid()) return;
+    onSubmit({ date, time, guests, occasion });
+  };
+
+  const handleDateChange = (e) => {
+    setDate(e.target.value);
+  };
+
+  const isFormValid = () => {
+    return (
+      date !== "" &&
+      time !== "" &&
+      guests >= 1 &&
+      guests <= 20 &&
+      occasion !== ""
+    );
   };
 
   return (
@@ -24,14 +31,13 @@ function BookingForm({ availableTimes = [], dispatch, submitForm }) {
       style={{ display: "grid", maxWidth: "300px", gap: "20px" }}
       onSubmit={handleSubmit}
     >
-      <h2>Book Now</h2>
-
       <label htmlFor="res-date">Choose date</label>
       <input
         type="date"
         id="res-date"
         value={date}
         onChange={handleDateChange}
+        min={new Date().toISOString().split("T")[0]}
         required
       />
 
@@ -62,6 +68,7 @@ function BookingForm({ availableTimes = [], dispatch, submitForm }) {
         onChange={(e) => setGuests(e.target.value)}
         required
       />
+      {guests < 1 && <p className="error">Must be at least 1 guest.</p>}
 
       <label htmlFor="occasion">Occasion</label>
       <select
@@ -74,9 +81,12 @@ function BookingForm({ availableTimes = [], dispatch, submitForm }) {
         <option>Anniversary</option>
       </select>
 
-      <button type="submit">Reserve Table</button>
+      <button type="submit" disabled={!isFormValid()}>
+        Reserve Table
+      </button>
     </form>
   );
 }
 
 export default BookingForm;
+
