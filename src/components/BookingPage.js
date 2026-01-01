@@ -1,15 +1,13 @@
 import BookingForm from "./BookingForm";
 
-function BookingPage() {
+function BookingPage({ availableTimes, dispatch }) {
   return (
     <section>
-      <h2>Reserve a Table at Little Lemon</h2>
-      <p>Please fill out the form below to make a reservation.</p>
-      <BookingForm />
+      <h2>Reserve a Table</h2>
+      <BookingForm availableTimes={availableTimes} dispatch={dispatch} />
     </section>
   );
 }
 
 export default BookingPage;
-
 
