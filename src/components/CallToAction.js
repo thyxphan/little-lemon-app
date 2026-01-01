@@ -16,13 +16,20 @@ function CallToAction() {
           Mediterranean.
         </p>
 
-        <Link to="/booking">
-          <button>Reserve a Table</button>
+        <Link
+          to="/booking"
+          className="cta-button"
+          aria-label="On Click"
+        >
+          Reserve a Table
         </Link>
       </div>
 
       <div className="hero-image">
-        <img src={heroImage} alt="Little Lemon restaurant view" />
+        <img
+          src={heroImage}
+          alt="Little Lemon restaurant view"
+        />
       </div>
     </section>
   );

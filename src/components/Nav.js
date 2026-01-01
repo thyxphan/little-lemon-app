@@ -5,27 +5,31 @@ function Nav() {
     <nav aria-label="Main navigation">
       <ul>
         <li>
-          <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
+          <NavLink to="/" end>
             Home
           </NavLink>
         </li>
+
         <li>
-          <NavLink to="/booking" className={({ isActive }) => (isActive ? "active" : "")}>
+          <NavLink to="/booking">
             Reserve
           </NavLink>
         </li>
+
         <li>
-          <NavLink to="/specials" className={({ isActive }) => (isActive ? "active" : "")}>
+          <NavLink to="/specials">
             Specials
           </NavLink>
         </li>
+
         <li>
-          <NavLink to="/chicago" className={({ isActive }) => (isActive ? "active" : "")}>
+          <NavLink to="/chicago">
             About
           </NavLink>
         </li>
+
         <li>
-          <NavLink to="/testimonials" className={({ isActive }) => (isActive ? "active" : "")}>
+          <NavLink to="/testimonials">
             Testimonials
           </NavLink>
         </li>

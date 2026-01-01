@@ -27,7 +27,6 @@ export const updateTimes = (state, action) => {
 };
 
 function Main() {
-  // eslint-disable-next-line no-unused-vars
   const [availableTimes, dispatch] = useReducer(
     updateTimes,
     [],
@@ -36,7 +35,6 @@ function Main() {
 
   const navigate = useNavigate();
 
-  // Handles submitting the booking form
   const submitForm = (formData) => {
     const success = submitAPI(formData);
     if (success) {
@@ -45,42 +43,40 @@ function Main() {
   };
 
   return (
-    <main>
-      <Routes>
-        {/* Homepage */}
-        <Route
-          path="/"
-          element={
-            <>
-              <CallToAction />
-              <Specials />
-              <Chicago />
-              <CustomersSay />
-            </>
-          }
-        />
+    <Routes>
+      {/* Homepage */}
+      <Route
+        path="/"
+        element={
+          <>
+            <CallToAction />
+            <Specials />
+            <Chicago />
+            <CustomersSay />
+          </>
+        }
+      />
 
-        {/* Individual pages */}
-        <Route path="/specials" element={<Specials />} />
-        <Route path="/chicago" element={<Chicago />} />
-        <Route path="/testimonials" element={<CustomersSay />} />
+      {/* Individual pages */}
+      <Route path="/specials" element={<Specials />} />
+      <Route path="/chicago" element={<Chicago />} />
+      <Route path="/testimonials" element={<CustomersSay />} />
 
-        {/* Booking page */}
-        <Route
-          path="/booking"
-          element={
-            <BookingPage
-              availableTimes={availableTimes}
-              dispatch={dispatch} // ✅ still passed down
-              submitForm={submitForm}
-            />
-          }
-        />
+      {/* Booking page */}
+      <Route
+        path="/booking"
+        element={
+          <BookingPage
+            availableTimes={availableTimes}
+            dispatch={dispatch}
+            submitForm={submitForm}
+          />
+        }
+      />
 
-        {/* Booking confirmation page */}
-        <Route path="/confirmed" element={<ConfirmedBooking />} />
-      </Routes>
-    </main>
+      {/* Booking confirmation page */}
+      <Route path="/confirmed" element={<ConfirmedBooking />} />
+    </Routes>
   );
 }
 

@@ -16,7 +16,7 @@ const specials = [
 
 function Specials() {
   return (
-    <section className="specials">
+    <section className="specials" aria-label="Weekly Specials">
       <h2>Our Weekly Specials</h2>
 
       <div className="special-cards">
@@ -24,7 +24,7 @@ function Specials() {
           <article className="special-card" key={name}>
             <figure>
               <img src={image} alt={name} className="special-image" />
-              <figcaption><h3>{name}</h3></figcaption>
+              <figcaption>{name}</figcaption>
             </figure>
           </article>
         ))}
@@ -34,3 +34,4 @@ function Specials() {
 }
 
 export default Specials;
+

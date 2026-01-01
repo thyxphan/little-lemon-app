@@ -6,47 +6,46 @@ function BookingForm({ availableTimes = [], onSubmit }) {
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("Birthday");
 
+  const isFormValid = () =>
+    date !== "" &&
+    time !== "" &&
+    guests >= 1 &&
+    guests <= 20 &&
+    occasion !== "";
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!isFormValid()) return;
+
     onSubmit({ date, time, guests, occasion });
-  };
-
-  const handleDateChange = (e) => {
-    setDate(e.target.value);
-  };
-
-  const isFormValid = () => {
-    return (
-      date !== "" &&
-      time !== "" &&
-      guests >= 1 &&
-      guests <= 20 &&
-      occasion !== ""
-    );
   };
 
   return (
     <form
-      style={{ display: "grid", maxWidth: "300px", gap: "20px" }}
       onSubmit={handleSubmit}
+      aria-label="Table reservation form"
+      style={{ display: "grid", maxWidth: "300px", gap: "20px" }}
     >
+      {/* Date */}
       <label htmlFor="res-date">Choose date</label>
       <input
         type="date"
         id="res-date"
         value={date}
-        onChange={handleDateChange}
+        onChange={(e) => setDate(e.target.value)}
         min={new Date().toISOString().split("T")[0]}
         required
+        aria-invalid={date === ""}
       />
 
+      {/* Time */}
       <label htmlFor="res-time">Choose time</label>
       <select
         id="res-time"
         value={time}
         onChange={(e) => setTime(e.target.value)}
         required
+        aria-invalid={time === ""}
       >
         <option value="" disabled>
           Select a time
@@ -58,6 +57,7 @@ function BookingForm({ availableTimes = [], onSubmit }) {
         ))}
       </select>
 
+      {/* Guests */}
       <label htmlFor="guests">Number of guests</label>
       <input
         type="number"
@@ -65,11 +65,18 @@ function BookingForm({ availableTimes = [], onSubmit }) {
         min="1"
         max="20"
         value={guests}
-        onChange={(e) => setGuests(e.target.value)}
+        onChange={(e) => setGuests(Number(e.target.value))}
         required
+        aria-invalid={guests < 1 || guests > 20}
+        aria-describedby="guests-error"
       />
-      {guests < 1 && <p className="error">Must be at least 1 guest.</p>}
+      {(guests < 1 || guests > 20) && (
+        <p id="guests-error" className="error">
+          Must be between 1 and 20 guests.
+        </p>
+      )}
 
+      {/* Occasion */}
       <label htmlFor="occasion">Occasion</label>
       <select
         id="occasion"
@@ -77,11 +84,16 @@ function BookingForm({ availableTimes = [], onSubmit }) {
         onChange={(e) => setOccasion(e.target.value)}
         required
       >
-        <option>Birthday</option>
-        <option>Anniversary</option>
+        <option value="Birthday">Birthday</option>
+        <option value="Anniversary">Anniversary</option>
       </select>
 
-      <button type="submit" disabled={!isFormValid()}>
+      {/* Submit */}
+      <button
+        type="submit"
+        disabled={!isFormValid()}
+        aria-label="On Click"
+      >
         Reserve Table
       </button>
     </form>
@@ -89,4 +101,5 @@ function BookingForm({ availableTimes = [], onSubmit }) {
 }
 
 export default BookingForm;
+
 

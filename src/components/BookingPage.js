@@ -4,6 +4,8 @@ function BookingPage({ availableTimes, submitForm }) {
   return (
     <section
       className="booking-page"
+      role="region"
+      aria-labelledby="booking-heading"
       style={{
         display: "flex",
         flexDirection: "column",
@@ -14,6 +16,7 @@ function BookingPage({ availableTimes, submitForm }) {
       }}
     >
       <h1
+        id="booking-heading"
         style={{
           fontSize: "2.5rem",
           marginBottom: "1rem",
@@ -23,6 +26,7 @@ function BookingPage({ availableTimes, submitForm }) {
       >
         Reserve a Table 🍋
       </h1>
+
       <p
         style={{
           maxWidth: "600px",
@@ -50,7 +54,7 @@ function BookingPage({ availableTimes, submitForm }) {
       >
         <BookingForm
           availableTimes={availableTimes}
-          onSubmit={submitForm} // ✅ pass submitForm as onSubmit
+          onSubmit={submitForm}
         />
       </div>
     </section>

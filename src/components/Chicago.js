@@ -1,6 +1,6 @@
 function Chicago() {
   return (
-    <section className="about">
+    <section className="about" aria-label="About Little Lemon Chicago">
       <header className="about-text centered-text">
         <h2>About Little Lemon Chicago</h2>
         <p>
