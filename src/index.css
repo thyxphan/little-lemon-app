@@ -261,4 +261,71 @@
     text-decoration: none;
   }
 
+  .confirmed-booking {
+    text-align: center;
+    padding: 3rem 1rem;
+    background-color: #fef9f4;
+    color: #495E57;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .confirmed-booking h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .confirmed-booking p {
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .confirmed-booking figure {
+    margin: 0;
+  }
+
+  .confirmed-image {
+    width: 150px; /* Adjust as needed */
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .table-image {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 100%;
+    height: auto;
+  }
+
+  .booking-form {
+    display: grid;
+    max-width: 300px;
+    gap: 20px;
+  }
+
+  .booking-form input,
+  .booking-form select,
+  .booking-form button {
+    padding: 8px;
+    font-size: 1rem;
+  }
+
+  .booking-form button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  .booking-form .error {
+    color: red;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+
 
